@@ -1,0 +1,89 @@
+//stage for the cube
+.stage {
+  width: 480px;
+  height: 500px;
+  margin: 10px auto;
+  position: relative;
+  perspective: 1600px;
+}
+
+//build cube
+
+.cube {
+  transform-style: preserve-3d;
+  transform-origin: 100px 50%;
+  position: absolute;
+  top: 120px;
+  left: 140px;
+  //magic comes
+  span {
+    color: #fff;
+    display: block;
+    font-size: 100px;
+    height: 200px;
+    line-height: 200px;
+    opacity: .5;
+    position: absolute;
+    text-align:center;
+    width: 200px;
+  }
+  .back {
+    background-color: #f00;
+    transform: rotateY(180deg) translateZ(100px);
+  }
+  .top {
+    background-color: #ff7400;
+    transform: rotateX(90deg) translateZ(100px);
+  }
+  .bottom {
+    background-color: #aaa;
+    box-shadow: 0 10px 100px rgba(0, 0, 0, .7);
+    transform: rotateX(-90deg) translateZ(100px);
+  }
+  .left {
+    background-color: #099;
+    transform: rotateY(-90deg) translateZ(100px);
+  }
+  .right {
+    background-color: #0c0;
+    transform: rotateY(90deg) translateZ(100px);
+  }
+  .front {
+    background-color: #ff0;
+    transform: translateZ(100px);
+  }
+  animation: rotate 10s infinite linear ;
+}
+
+.container {
+  margin: 0 auto;
+  width: 960px;
+}
+.left, .right {
+  height: 100%;
+  overflow: hidden;
+  width: 50%;
+}
+.left {
+  float: left;
+  .stage {
+    perspective-origin: 63.5% -340px;
+  }
+}
+.right {
+  float: right;
+  .stage {
+    perspective-origin: 36.5% -340px;
+  }
+}
+
+//keyframe
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+  
+}
